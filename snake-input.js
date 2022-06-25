@@ -9,12 +9,12 @@ window.addEventListener("keydown", (e) => {
       inputDirection = { x: 0, y: -1 };
       break;
     case "ArrowDown":
-    case "a":
+    case "s":
       if (lastInputDirection.y !== 0) break;
       inputDirection = { x: 0, y: 1 };
       break;
     case "ArrowLeft":
-    case "s":
+    case "a":
       if (lastInputDirection.x !== 0) break;
       inputDirection = { x: -1, y: 0 };
       break;

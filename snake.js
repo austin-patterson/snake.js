@@ -1,6 +1,6 @@
 import { getInputDirection } from "./snake-input.js";
 
-export const SNAKE_SPEED = 3; //moves per second
+export const SNAKE_SPEED = 5; //moves per second
 
 const body = [...initSnake()];
 let newSegments = 0;
