@@ -1,30 +1,59 @@
-import { SNAKE_SPEED, update as updateSnake, draw as drawSnake } from './snake.js'
+import { NUM_ROWS, NUM_COLUMNS, outsideGrid } from "./snake-grid.js";
+import {
+  SNAKE_SPEED,
+  update as updateSnake,
+  draw as drawSnake,
+  getSnakeHead,
+  snakeIntersection
+} from "./snake.js";
+import { update as updateFood, draw as drawFood } from "./snake-food.js";
 
-let lastRenderTime = 0
-const MS_PER_SEC = 1000
-const gameBoard = document.getElementById('game-board')
+export const MS_PER_SEC = 1000;
 
+const gameBoard = document.getElementById("game-board");
+let lastRenderTime;
+let gameOver = false;
+
+function initGame() {
+  lastRenderTime = 0;
+  gameBoard.style.gridTemplateRows = `repeat(${NUM_ROWS}, 1fr)`;
+  gameBoard.style.gridTemplateColumns = `repeat(${NUM_COLUMNS}, 1fr)`;
+  window.requestAnimationFrame(main);
+}
 
 function main(currentTime) {
-  window.requestAnimationFrame(main)
-  const secondsSinceLastRender = (currentTime - lastRenderTime) / MS_PER_SEC
-  if (secondsSinceLastRender < 1 / SNAKE_SPEED) return
+  if (gameOver) {
+    if (confirm('You lost. Press OK to restart.')) {
+      window.location = '/'
+    }
+    return
+  }
 
-  console.log('tick')
-  lastRenderTime = currentTime
+  window.requestAnimationFrame(main);
+  const secondsSinceLastRender = (currentTime - lastRenderTime) / MS_PER_SEC;
+  if (secondsSinceLastRender < 1 / SNAKE_SPEED) return;
 
-  update()
-  draw()
+  console.log("tick");
+  lastRenderTime = currentTime;
+
+  update();
+  draw();
 }
 
 function update() {
-  updateSnake()
+  updateSnake();
+  updateFood();
+  checkDeath();
 }
 
 function draw() {
-  gameBoard.innerHTML = ''
-  drawSnake(gameBoard)
+  gameBoard.innerHTML = "";
+  drawSnake(gameBoard);
+  drawFood(gameBoard);
 }
 
-// Start the game
-window.requestAnimationFrame(main)
+function checkDeath() {
+  gameOver = outsideGrid(getSnakeHead()) || snakeIntersection()
+}
+
+initGame();

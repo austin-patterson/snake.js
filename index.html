@@ -5,9 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>snake.js</title>
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/favicon/favicon-16x16.png"
+    />
     <link rel="manifest" href="/favicon/site.webmanifest" />
     <style>
       body {
@@ -22,16 +36,14 @@
 
       #game-board {
         /*       
-      --num-rows: 25;
-      --num-rows: 25;
-      */
+        --num-rows: 25;
+        --num-rows: 25;
+        */
         background-color: #ccc;
         height: 100vmin;
         width: 100vmin;
         /* TODO: make this more configurable */
         display: grid;
-        grid-template-rows: repeat(var(--num-rows, 21), 1fr);
-        grid-template-columns: repeat(var(--num-cols, 21), 1fr);
       }
 
       .snake {
