@@ -1,7 +1,8 @@
-import { SNAKE_SPEED, update as updateSnake, draw as drawSnake } from './snake'
+import { SNAKE_SPEED, update as updateSnake, draw as drawSnake } from './snake.js'
 
 let lastRenderTime = 0
 const MS_PER_SEC = 1000
+const gameBoard = document.getElementById('game-board')
 
 
 function main(currentTime) {
@@ -21,7 +22,8 @@ function update() {
 }
 
 function draw() {
-  drawSnake()
+  gameBoard.innerHTML = ''
+  drawSnake(gameBoard)
 }
 
 // Start the game
